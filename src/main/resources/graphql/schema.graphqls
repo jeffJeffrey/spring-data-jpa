@@ -1,0 +1,72 @@
+type Customer {
+    id: ID!
+    name: String!
+    email: String!
+    bills: [Bill]
+}
+
+type Product {
+    id: ID!
+    name: String!
+    price: Float!
+    productItems: [ProductItem]
+}
+
+type Bill {
+    id: ID!
+    customerID: ID!
+    billingDate: String!
+    customer: Customer
+    productItems: [ProductItem]
+}
+
+type ProductItem {
+    id: ID!
+    product: Product!
+    quantity: Int!
+    bill: Bill
+}
+
+input CustomerRequest {
+    name: String!
+    email: String!
+}
+
+input ProductRequest {
+    name: String!
+    price: Float!
+}
+
+input ProductItemRequest {
+    productID: ID!
+    quantity: Int!
+}
+
+input BillRequest {
+    customerID: ID!
+    productItems: [ProductItemRequest]!
+}
+
+
+type Query {
+    getCustomerById(id: ID!): Customer
+    getAllCustomers: [Customer]
+    
+    getProductById(id: ID!): Product
+    getAllProducts: [Product]
+    
+    getBillById(id: ID!): Bill
+    getAllBills: [Bill]
+}
+
+type Mutation {
+    createCustomer(customerRequest: CustomerRequest!): Customer
+    updateCustomer(id: ID!, customerRequest: CustomerRequest!): Customer
+    deleteCustomer(id: ID!): Boolean
+    
+    createProduct(productRequest: ProductRequest!): Product
+    updateProduct(id: ID!, productRequest: ProductRequest!): Product
+    deleteProduct(id: ID!): Boolean
+    
+    createBill(billRequest: BillRequest!): Bill
+}
