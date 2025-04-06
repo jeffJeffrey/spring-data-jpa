@@ -1,5 +1,6 @@
 package com.jeffrey.E_COMMERCE_APP.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -28,7 +29,7 @@ public class Customer {
     private String email;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List <Bill> bills;
+    private List <Bill> bills = new ArrayList<>();;
 
     
     public Customer(String name, String email) {

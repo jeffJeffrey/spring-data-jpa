@@ -1,5 +1,6 @@
 package com.jeffrey.E_COMMERCE_APP.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -27,7 +28,7 @@ public class Product {
     private Double price;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
-    private List <ProductItem> productItems;
+    private List <ProductItem> productItems = new ArrayList<>();;
 
     public Product(String name, Double price) {
         this.name = name;
