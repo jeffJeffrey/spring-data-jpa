@@ -54,4 +54,13 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.delete(customer);
 
     }
+
+    @Override
+    public Customer findByEmail(String email) {
+        Customer  customer = customerRepository.findByEmail(email);
+        if (customer == null) {
+            throw new IllegalArgumentException("Customer not found");
+        }
+        return customer;
+    }
 }

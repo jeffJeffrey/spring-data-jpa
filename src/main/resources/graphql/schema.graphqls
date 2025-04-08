@@ -50,6 +50,7 @@ input BillRequest {
 
 type Query {
     getCustomerById(id: ID!): Customer
+    getCustomerByEmail(email: String!): Customer
     getAllCustomers: [Customer]
     
     getProductById(id: ID!): Product

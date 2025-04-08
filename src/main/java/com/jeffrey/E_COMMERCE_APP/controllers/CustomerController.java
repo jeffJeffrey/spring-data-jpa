@@ -30,6 +30,11 @@ public class CustomerController {
         return customerService.getById(id);
     }
 
+    @QueryMapping
+    public Customer getCustomerByEmail(@Argument String email){
+        return customerService.findByEmail(email);
+    }
+
     @MutationMapping
     public Customer updateCustomer(@Argument Long id, @Argument CustomerRequest customerRequest){
         return customerService.update(id, customerRequest);
